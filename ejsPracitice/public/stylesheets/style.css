@@ -1,0 +1,13 @@
+body{
+    background-color: aliceblue;
+}
+.container {
+border: 2px solid black;
+padding-left: 30px;
+}  
+
+h1{
+    font-weight: bold;
+    text-align: center;
+}
+

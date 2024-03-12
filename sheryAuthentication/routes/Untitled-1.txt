@@ -1,0 +1,9 @@
+install these packages:
+npm i passport passport-local passport-local-mongoose mongoose express-session
+
+Write app.js code first in app.js file and Write it after view engine
+and bofore logger
+
+setup users.js then properly
+
+in index.js try ragister first and then other codes as well
