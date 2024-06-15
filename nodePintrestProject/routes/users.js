@@ -1,9 +1,34 @@
-var express = require('express');
-var router = express.Router();
+const mongoose = require ('mongoose');
+const plm =require("passport-local-mongoose");
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+mongoose.connect("mongodb://127.0.0.1:27017/nodePintrestProject");
+
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    require: true,
+    unique: true
+  },
+password: {
+  type:String
+},
+posts: [{
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'Post'
+}],
+dp: {
+  type: String, //Asuming the profile picture is stored as a file path
+},
+email: {
+  type : String, 
+  require: true,
+},
+fullname: {
+  type: String, 
+  require: true,
+},
 });
 
-module.exports = router;
+userSchema.plugin(plm);
+
+module.exports = mongoose.model("user", userSchema);

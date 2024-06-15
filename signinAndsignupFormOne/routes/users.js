@@ -1,9 +1,16 @@
-const mongoose = require('mongoose');
+
+const mongoose = require("mongoose");
 const express = require('express');
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/signuinAndSignupOne');
-
+mongoose.connect('mongodb://127.0.0.1:27017/signuinAndSignupOne', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+    // Start your server or perform other operations here
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+  });
 // Define the schema for the user
 const userSchema = new mongoose.Schema({
   username: {
@@ -18,8 +25,29 @@ const userSchema = new mongoose.Schema({
 });
 
 // Create a model from the schema
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);
 
 
+
+// 
+
+
+
+// const UserSchema = mongoose.Schema({
+
+//     username : {
+//         type : String,
+//         required: true
+//     },
+//     password : {
+//         type: String,
+//         required: true
+//     },
+//     email : {
+//         type : String,
+//         required: true
+//     }
+
+// }, {timestamps : true});
+
+// module.exports = mongoose.model("user", UserSchema);

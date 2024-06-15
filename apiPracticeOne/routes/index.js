@@ -4,13 +4,13 @@ const {signin, signup} = require("../controllers/userControllers")
 
 
 /* GET home page. */
-router.get('/',validateSchemaForRagister, function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/signup',validateSchemaForRagister, signup); 
+router.post('/signup', signup); 
 
-router.post('/signin',validateSchemaForRagister,   signin);
+router.post('/signin',   signin);
 
 module.exports = router;
 
